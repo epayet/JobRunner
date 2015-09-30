@@ -16,6 +16,7 @@ class JobRunner:
         self.queue.clear_queue()
 
     def run(self):
-        job_info = self.queue.pop()
-        job = create_job(job_info)
-        job.run()
+        while self.get_nb_jobs() > 0:
+            job_info = self.queue.pop()
+            job = create_job(job_info)
+            job.run()

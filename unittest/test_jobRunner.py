@@ -14,11 +14,17 @@ class TestJobRunner(TestCase):
     def test_getNbJobs_empty(self):
         self.assertEqual(self.job_runner.get_nb_jobs(), 0)
 
-    def test_createJob_JobCreated(self):
+    def test_createJob_jobCreated(self):
         self.job_runner.add_job(self.simple_job)
         self.assertEqual(self.job_runner.get_nb_jobs(), 1)
 
-    def test_runPrintJob_JobPopped(self):
+    def test_run_1JobPopped(self):
+        self.job_runner.add_job(self.simple_job)
+        self.job_runner.run()
+        self.assertEqual(self.job_runner.get_nb_jobs(), 0)
+
+    def test_run_everyJob(self):
+        self.job_runner.add_job(self.simple_job)
         self.job_runner.add_job(self.simple_job)
         self.job_runner.run()
         self.assertEqual(self.job_runner.get_nb_jobs(), 0)
