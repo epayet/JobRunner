@@ -2,7 +2,7 @@ import redis
 
 
 class RedisQueue:
-    def __int__(self, host, port, db):
+    def __init__(self, host='localhost', port=6379, db=0):
         self.redis = redis.StrictRedis(host=host, port=port, db=db)
         self.jobQueueKey = "jobQueue"
         pass
