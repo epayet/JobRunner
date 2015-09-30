@@ -1,29 +1,24 @@
 from unittest import TestCase
 
-from default.JobRunner import JobRunner
-from default.Job import Job
-from default.PrintJob import PrintJob
+from job.JobRunner import JobRunner
+from job.jobs.Job import Job
+from job.queue.MemoryQueue import MemoryQueue
 
-
-__author__ = 'manu'
 
 class TestJobRunner(TestCase):
     def setUp(self):
-        self.jobRunner = JobRunner()
-
-    def tearDown(self):
-        self.jobRunner.clearJobs()
+        memory_queue = MemoryQueue()
+        self.job_runner = JobRunner(memory_queue)
+        self.simple_job = Job("test")
 
     def test_getNbJobs_empty(self):
-        self.assertEqual(self.jobRunner.getNbJobs(), 0)
+        self.assertEqual(self.job_runner.get_nb_jobs(), 0)
 
     def test_createJob_JobCreated(self):
-        job = Job("test", {})
-        self.jobRunner.addJob(job)
-        self.assertEqual(self.jobRunner.getNbJobs(), 1)
+        self.job_runner.add_job(self.simple_job)
+        self.assertEqual(self.job_runner.get_nb_jobs(), 1)
 
     def test_runPrintJob_JobPopped(self):
-        job = PrintJob("PrintJobCoucouToi", {"text": "coucou toi"})
-        self.jobRunner.addJob(job)
-        self.jobRunner.run()
-        self.assertEqual(self.jobRunner.getNbJobs(), 0)
+        self.job_runner.add_job(self.simple_job)
+        self.job_runner.run()
+        self.assertEqual(self.job_runner.get_nb_jobs(), 0)
