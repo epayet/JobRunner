@@ -65,7 +65,7 @@ Job definition are on the [job/jobs folder](job/jobs). You have to create a clas
 
 #### Add it in the job_factory
 
-Register your new Job in the [job/jobs/job_factory.py](job/jobs/job_factory.py) file.
+Register your new Job in the [job/jobs/job_factory.py](job/jobs/job_factory.py) file. TODO maybe use class reflection instead of factory ?
 
 ```python
 # ...
