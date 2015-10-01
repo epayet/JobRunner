@@ -1,0 +1,17 @@
+producer1:
+  build: .
+  command: examples/simple-producer.py
+  links:
+   - redis
+producer2:
+  build: .
+  command: examples/simple-producer.py
+  links:
+   - redis
+consumer1:
+  build: .
+  command: examples/simple-consumer.py
+  links:
+   - redis
+redis:
+  image: redis
