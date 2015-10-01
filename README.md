@@ -19,12 +19,13 @@ The next producer will pop the next job, create the correct class corresponding 
 ## Quick example
 
 ```python
-# default: localhost, 6379
-redis_queue = RedisQueue()                                              
-job_runner = JobRunner(redis_queue)                                     # Create the job runner
-job_runner.add_job(PrintJob("myFirstJob", {"text": "Hello World"}))     # Add a job of type PrintJob
-job_runner.run()                                                        # Run every job it can
-# Will print "Hello World"
+redis_queue = RedisQueue()    # default: localhost, 6379   
+# Create the job runner
+job_runner = JobRunner(redis_queue)  
+# Add a job of type PrintJob
+job_runner.add_job(PrintJob("myFirstJob", {"text": "Hello World"}))
+# Run every job it can. It will print "Hello World"
+job_runner.run()                                                        
 ```
 
 ## Run samples
