@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple asynchronous job runner written in Python. It uses Redis as a queue system and docker to easily create containers. A producer add a job description in queue looking like this : 
+This is a simple asynchronous job runner written in Python. It uses Redis as a queue system and Docker to easily create containers. A producer add a job description in queue looking like this : 
 
 ```json
 {
